@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Group;
 use Illuminate\Database\Seeder;
-use App\Group;
 
 class GroupsTableSeeder extends Seeder
 {
@@ -23,7 +23,7 @@ class GroupsTableSeeder extends Seeder
             'content' => '初心者中心にバレーをするメンバーを募集します。',
         ];
         $group = new Group;
-        $group->fill(param)->save();
+        $group->fill($param)->save();
         
         $param = [
             'user_id' => '1',
@@ -34,7 +34,7 @@ class GroupsTableSeeder extends Seeder
             'content' => '中級者中心にバレーをするメンバーを募集します。',
         ];
         $group = new Group;
-        $group->fill(param)->save();
+        $group->fill($param)->save();
 
         $param = [
             'user_id' => '1',
@@ -45,7 +45,7 @@ class GroupsTableSeeder extends Seeder
             'content' => '上級者中心にバレーをするメンバーを募集します。',
         ];
         $group = new Group;
-        $group->fill(param)->save();
+        $group->fill($param)->save();
 
     }
 }
