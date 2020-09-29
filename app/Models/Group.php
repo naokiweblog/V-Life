@@ -10,6 +10,9 @@ class Group extends Model
     use HasFactory;
 
     protected $guarded = array('id');
+    protected $dates = [
+        'day',
+    ];
 
     public static $rules = array(
         'user_id' => 'required',

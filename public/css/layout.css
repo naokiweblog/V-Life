@@ -1,0 +1,52 @@
+. {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+header {
+  height: 100px;
+  background-color: #FF69A3;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, .5);
+}
+
+container {
+  height: calc(100vh - 100px);
+  background-color: aliceblue;
+}
+
+.app-name {
+  height: 100px;
+  margin-top: 15px;
+}
+
+.app-name-btn {
+  color: aliceblue;
+  border: #FF69A3 solid 1px;
+  border-radius: 1rem;
+  font-family: arial black;
+  font-size: 80px;
+  margin-left: 10px;
+  height: 80px;
+  line-height: 80px;
+  display: block;
+}
+
+.app-name-btn:hover {
+  border: aliceblue solid 1px;
+}

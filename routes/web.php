@@ -14,11 +14,9 @@ use App\Http\Controllers\GroupController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GroupController::class, 'index']);
 
-Route::resource('/group', GroupController::class);
+Route::resource('/group', GroupController::class, ['except' => ['index']]);
 
 Auth::routes();
 

@@ -1,0 +1,20 @@
+.header-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-register {
+  color: aliceblue;
+  font-size: 20px;
+  line-height: 100px;
+  margin-right: 10px;
+  font-weight: bolder;
+  padding: 30px 5px;
+  border: #FF69A3 solid 1px;
+  border-radius: 1rem;
+}
+
+.header-register:hover {
+  border: aliceblue solid 1px;
+}
+

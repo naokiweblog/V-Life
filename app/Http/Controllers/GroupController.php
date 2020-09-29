@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\auth;
 
 
 class GroupController extends Controller
@@ -15,8 +16,10 @@ class GroupController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         $groups = Group::all();
-        return $groups->toArray();
+        return view('group.index', ['groups' => $groups]);
     }
 
     /**

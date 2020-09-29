@@ -1,0 +1,67 @@
+.card-box-login {
+  background-color: #D9E5FF;
+  width: 700px;
+  height: 400px;
+  margin: 100px auto auto;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+.card-box-signup {
+  background-color: #D9E5FF;
+  width: 700px;
+  height: 500px;
+  margin: 100px auto auto;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+.card-header {
+  font-size: 50px;
+  font-weight: bolder;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.col-md-4 {
+  width: 40%;
+  text-align: right;
+  padding-right: 10px;
+  font-weight: bolder;
+  line-height: 50px;
+}
+
+.col-md-6 {
+  width: 60%;
+}
+
+.form-control {
+  width: 90%;
+  height: 50px;
+  display: block;
+}
+
+.form-check {
+  margin: auto;
+}
+
+.register-submit {
+  text-align: center;
+}
+
+.big-btn {
+  width: 200px;
+  height: 50px;
+  background-color: #FF69A3;
+  color: aliceblue;
+  font-weight: bolder;
+  font-size: 30px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  border: aliceblue solid 1px;
+  border-radius: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+}
