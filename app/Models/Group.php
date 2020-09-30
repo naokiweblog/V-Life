@@ -15,7 +15,6 @@ class Group extends Model
     ];
 
     public static $rules = array(
-        'user_id' => 'required',
         'name' => 'required',
         'day' => 'required',
         'pref_id' => 'required',

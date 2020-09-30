@@ -26,13 +26,13 @@
 
 @section('container')
 <div class="group-form card-box-create-group">
-  <form action="{{ url('group') }}" method="post" enctype="multipart/form-data">
+  <form action="{{ url('group/'.$group->id) }}" method="post" enctype="multipart/form-data">
     @csrf
-    @method('POST')
+    @method('PUT')
     <div class="group-form-one">
       <label for="name" class="left">イベント名</label>
       <div class="right">
-        <input id="name" type="text" class="form-control" name="name" required autofocus>
+        <input id="name" type="text" class="form-control" name="name" value="{{ $group->name }}" required autofocus>
         @error('name')
         <span class="error-message" role="alert">
           <strong>{{ $message }}</strong>
@@ -43,7 +43,7 @@
     <div class="group-form-one">
       <label for="day" class="left">日時(15分単位)</label>
       <div class="right">
-        <input id="day" type="datetime-local" class="form-control" name="day" step="900" required>
+        <input id="day" type="datetime-local" class="form-control" name="day" step="900" value="{{str_replace(' ', 'T', $group->day)}}" required>
         @error('day')
         <span class="error-message" role="alert">
           <strong>{{ $message }}</strong>
@@ -56,7 +56,11 @@
       <div class="right">
         <select id="pref_id" class="form-control" name="pref_id" required>
           @foreach(config('pref') as $index => $name)
-          <option value="{{ $index }}">{{$name}}</option>
+            @if ($group->pref_id === $index)
+            <option value="{{ $index }}" selected>{{$name}}</option>
+            @else
+            <option value="{{ $index }}">{{$name}}</option>
+            @endif
           @endforeach
         </select>
         @error('pref_id')
@@ -82,7 +86,7 @@
     <div class="group-form-big">
       <label for="content" class="left">イベント詳細など</label>
       <div class="right">
-        <textarea id="content" class="form-control-textarea" name="content" placeholder="活動内容・場所・雰囲気などの詳細" required></textarea>
+        <textarea id="content" class="form-control-textarea" name="content" placeholder="活動内容・場所・雰囲気などの詳細" required>{{ $group->content }}</textarea>
         @error('image')
         <span class="error-message" role="alert">
           <strong>{{ $message }}</strong>
@@ -92,7 +96,7 @@
     </div>
     <div class="group-submit">
       <button type="submit" name="new-group" class="big-btn">
-        イベント作成
+        編集内容登録
       </button>
     </div>
   </form>

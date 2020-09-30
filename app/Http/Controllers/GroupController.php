@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\auth;
 
 class GroupController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class GroupController extends Controller
     {
         $user = Auth::user();
 
-        $groups = Group::all();
+        $groups = Group::with('user')->orderBy('updated_at', 'desc')->get();
         return view('group.index', ['groups' => $groups]);
     }
 
@@ -49,8 +54,9 @@ class GroupController extends Controller
         } else {
             $fileName = "";
         }
-
+        
         $group = new Group;
+        $group->user_id = $request->user()->id;
         $group->name = $request->name;
         $group->day = $request->day;
         $group->pref_id = $request->pref_id;
@@ -58,7 +64,7 @@ class GroupController extends Controller
         $group->content = $request->content;
         $group->save();
 
-        return redirect()->route('group', [$group]);
+        return redirect('group/'.$group->id);
 
     }
 
@@ -79,9 +85,9 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Group $group)
     {
-        //
+        return view('group.edit', ['group' => $group]);
     }
 
     /**
@@ -91,9 +97,23 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Group $group)
     {
-        //
+        $this->validate($request, Group::$rules);
+
+        if ($file = $request->image) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $fileName);
+            $group->image = $fileName;
+        }
+        $group->name = $request->name;
+        $group->day = $request->day;
+        $group->pref_id = $request->pref_id;
+        $group->content = $request->content;
+        $group->save();
+
+        return redirect('group/'.$group->id);
     }
 
     /**
@@ -102,8 +122,9 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return redirect('/');
     }
 }

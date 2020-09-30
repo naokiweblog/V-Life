@@ -50,3 +50,31 @@ container {
 .app-name-btn:hover {
   border: aliceblue solid 1px;
 }
+
+/* 全体 */
+.scroll {
+  overflow: scroll;
+  height: calc(100vh - 100px);
+}
+
+.form-control-textarea {
+  height: 100px;
+  width: 90%;
+}
+
+.big-btn {
+  width: 200px;
+  height: 50px;
+  background-color: #FF69A3;
+  color: aliceblue;
+  font-weight: bolder;
+  font-size: 30px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  border: aliceblue solid 1px;
+  border-radius: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+}
