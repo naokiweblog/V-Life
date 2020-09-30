@@ -29,7 +29,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('group.create');
     }
 
     /**
@@ -40,7 +40,26 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Group::$rules);
+
+        if ($file = $request->image) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        $group = new Group;
+        $group->name = $request->name;
+        $group->day = $request->day;
+        $group->pref_id = $request->pref_id;
+        $group->image = $fileName;
+        $group->content = $request->content;
+        $group->save();
+
+        return redirect()->route('group', [$group]);
+
     }
 
     /**
@@ -49,9 +68,9 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Group $group)
     {
-        //
+        return view('group.show', ['group' => $group]);
     }
 
     /**

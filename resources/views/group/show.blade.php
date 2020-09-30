@@ -26,13 +26,13 @@
 @endsection
 
 @section('container')
-  <div class="all-groups">
-    @foreach ($groups as $group)
-      <a href="{{ url('group/'.$group->id) }}" class="one-group">
-        <p class="group-name">{{$group->name}}</p>
-        <p class="group-info">主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}</p>
-        <p class="group-content">{{mb_strimwidth($group->content, 0, 50, "…")}}</p>
-      </a>
-      @endforeach
-  </div>
+<div class="group-show">
+  <h1 class="group-show-name">{{$group->name}}</h1>
+  <p class="group-show-info">
+    主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}
+  </p>
+
+  <img src="#">
+  <div class="group-show-content">{{$group->content}}</div>
+</div>
 @endsection

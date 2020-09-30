@@ -18,3 +18,53 @@
   border: aliceblue solid 1px;
 }
 
+/* グループ一覧 */
+.all-groups {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+.one-group {
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  background-color: #D9E5FF;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+}
+
+.group-info {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+}
+
+.group-name {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+/* グループ詳細 */
+.group-show {
+  width: 800px;
+  margin: 10px auto;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  background-color: #D9E5FF;
+  padding: 10px;
+}
+
+.group-show-name {
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.group-show-info {
+  text-align: right;
+}
+
+

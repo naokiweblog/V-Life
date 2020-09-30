@@ -27,4 +27,8 @@ class Group extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getPrefNameAttribute() {
+        return config('pref.'.$this->pref_id);
+    }
 }

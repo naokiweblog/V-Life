@@ -3,10 +3,10 @@
 @section('header')
   <div class="header-content">
     <h1 class="app-name">
-      <a href="/" class="app-name-btn">V-Life</a>
+      <a href="{{ url('/') }}" class="app-name-btn">V-Life</a>
     </h1>
     <h1>
-      <a class="header-register" href="register">サインアップ</a>
+      <a class="header-register" href="{{ url('register') }}">サインアップ</a>
     </h1>
   </div>
 @endsection
