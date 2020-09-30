@@ -27,7 +27,7 @@ class GroupsTableSeeder extends Seeder
         
         $param = [
             'user_id' => '1',
-            'name' => '中級者者募集',
+            'name' => '中級者募集',
             'day' => '2020-11-02T18:00',
             'pref_id' => '2',
             'image' => '',

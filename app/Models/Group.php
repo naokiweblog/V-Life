@@ -15,7 +15,6 @@ class Group extends Model
     ];
 
     public static $rules = array(
-        'user_id' => 'required',
         'name' => 'required',
         'day' => 'required',
         'pref_id' => 'required',
@@ -26,5 +25,9 @@ class Group extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function getPrefNameAttribute() {
+        return config('pref.'.$this->pref_id);
     }
 }

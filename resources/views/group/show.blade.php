@@ -26,14 +26,31 @@
 @endsection
 
 @section('container')
-  <div class="all-groups scroll">
-    @foreach ($groups as $group)
-      <a href="{{ url('group/'.$group->id) }}" class="one-group">
-        <p class="group-name">{{mb_strimwidth($group->name, 0, 31, "…")}}</p>
-        <p class="group-info">主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}</p>
-        <p class="group-content">{{mb_strimwidth($group->content, 0, 59, "…")}}</p>
-        <img src="../../uploads/{{ $group->image }}" class="group-image" alt="">
-      </a>
-      @endforeach
+<div class="scroll">
+  <div class="group-show">
+    <div class="group-show-up">
+      <h1 class="group-show-name">{{$group->name}}</h1>
+      <p class="group-show-info">
+        主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}
+      </p>
+      <img src="../../uploads/{{ $group->image }}" class="group-show-image" alt="">
+      <div class="group-show-content">{{$group->content}}</div>
+    </div>
+    @if (Auth::id()===$group->user_id)
+    <div class="group-show-btn">
+      <form action="{{ url('group/'.$group->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="big-btn">
+          イベント削除
+        </button>
+      </form>
+      <div>
+        <a class="big-btn" href="{{ url('group/'.$group->id.'/edit') }}">イベント編集</a>
+      </div>
+    </div>
+    @endif
   </div>
+</div>
+
 @endsection
