@@ -51,6 +51,35 @@
     </div>
     @endif
   </div>
+  <div class="group-comment">
+  @foreach ($comments as $comment)
+    <div class="one-comment">
+      <p class="comment-info">{{$comment->user->name}}/{{$comment->created_at}}</p>
+      <p class="comment-content">{{$comment->content}}</p>
+    </div>
+  @endforeach
+  <div class="comment-form">
+    <form action="{{ url('/group/'.$group->id.'/comment') }}" method="post" enctype="multipart/form-data">
+      @csrf
+      @method('POST')
+      <div class="comment-form-big">
+        <label for="content" class="comment-form-label"></label>
+        <div class="comment-form-text">
+          <textarea id="content" class="comment-form-control-textarea" name="content" placeholder="イベントの主催者に連絡しよう" required></textarea>
+          @error('image')
+          <span class="error-message" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+      </div>
+      <div class="comment-submit">
+        <button type="submit" name="new-group" class="big-btn">
+          投稿する
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
 @endsection

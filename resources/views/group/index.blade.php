@@ -34,6 +34,6 @@
         <p class="group-content">{{mb_strimwidth($group->content, 0, 59, "…")}}</p>
         <img src="../../uploads/{{ $group->image }}" class="group-image" alt="">
       </a>
-      @endforeach
+    @endforeach
   </div>
 @endsection

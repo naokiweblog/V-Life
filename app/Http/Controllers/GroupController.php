@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\auth;
 
@@ -11,7 +12,7 @@ class GroupController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index']);
     }
 
     /**
@@ -51,8 +52,7 @@ class GroupController extends Controller
             $fileName = time() . $file->getClientOriginalName();
             $target_path = public_path('uploads/');
             $file->move($target_path, $fileName);
-        } else {
-            $fileName = "";
+            $group->image = $fileName;
         }
         
         $group = new Group;
@@ -60,7 +60,6 @@ class GroupController extends Controller
         $group->name = $request->name;
         $group->day = $request->day;
         $group->pref_id = $request->pref_id;
-        $group->image = $fileName;
         $group->content = $request->content;
         $group->save();
 
@@ -76,7 +75,10 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        return view('group.show', ['group' => $group]);
+        $user = Auth::user();
+        $group_id = $group->id;
+        $comments = Comment::with('user')->where('Group_id', $group->id)->get();
+        return view('group.show', compact('group','comments'));
     }
 
     /**
