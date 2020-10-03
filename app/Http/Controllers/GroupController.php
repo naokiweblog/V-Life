@@ -52,7 +52,8 @@ class GroupController extends Controller
             $fileName = time() . $file->getClientOriginalName();
             $target_path = public_path('uploads/');
             $file->move($target_path, $fileName);
-            $group->image = $fileName;
+        } else {
+            $fileName = "";
         }
         
         $group = new Group;
@@ -60,6 +61,7 @@ class GroupController extends Controller
         $group->name = $request->name;
         $group->day = $request->day;
         $group->pref_id = $request->pref_id;
+        $group->image = $fileName;
         $group->content = $request->content;
         $group->save();
 
