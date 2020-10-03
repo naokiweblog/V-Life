@@ -6,6 +6,7 @@ use App\Models\Group;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class GroupController extends Controller
@@ -48,20 +49,24 @@ class GroupController extends Controller
     {
         $this->validate($request, Group::$rules);
 
-        if ($file = $request->image) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('uploads/');
-            $file->move($target_path, $fileName);
-        } else {
-            $fileName = "";
-        }
+        // if ($file = $request->image) {
+        //     $fileName = time() . $file->getClientOriginalName();
+        //     $target_path = public_path('uploads/');
+        //     $file->move($target_path, $fileName);
+        // } else {
+        //     $fileName = "";
+        // }
         
         $group = new Group;
         $group->user_id = $request->user()->id;
         $group->name = $request->name;
         $group->day = $request->day;
         $group->pref_id = $request->pref_id;
-        $group->image = $fileName;
+        if ($file = $request->image) {
+            $path = Storage::disk('s3')->putFile('/', $file, 'public');
+            $group->image = Storage::disk('s3')->url($path);
+        }
+        // $group->image = $fileName;
         $group->content = $request->content;
         $group->save();
 
@@ -105,15 +110,19 @@ class GroupController extends Controller
     {
         $this->validate($request, Group::$rules);
 
-        if ($file = $request->image) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('uploads/');
-            $file->move($target_path, $fileName);
-            $group->image = $fileName;
-        }
+        // if ($file = $request->image) {
+        //     $fileName = time() . $file->getClientOriginalName();
+        //     $target_path = public_path('uploads/');
+        //     $file->move($target_path, $fileName);
+        //     $group->image = $fileName;
+        // }
         $group->name = $request->name;
         $group->day = $request->day;
         $group->pref_id = $request->pref_id;
+        if ($file = $request->image) {
+            $path = Storage::disk('s3')->putFile('/', $file, 'public');
+            $group->image = Storage::disk('s3')->url($path);
+        }
         $group->content = $request->content;
         $group->save();
 
