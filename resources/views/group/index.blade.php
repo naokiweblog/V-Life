@@ -32,7 +32,7 @@
         <p class="group-name">{{mb_strimwidth($group->name, 0, 31, "…")}}</p>
         <p class="group-info">主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}</p>
         <p class="group-content">{{mb_strimwidth($group->content, 0, 59, "…")}}</p>
-        <img src="{{ Storage::disk('s3')->url($group->image) }}" class="group-image" alt="">
+        <img src="{{ $group->image }}" class="group-image" alt="">
       </a>
     @endforeach
   </div>

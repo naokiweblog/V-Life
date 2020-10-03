@@ -33,7 +33,7 @@
       <p class="group-show-info">
         主催者:{{$group->user->name}}/{{$group->day->format('Y年m月d日G:00から')}}/{{$group->prefName}}
       </p>
-      <img src="{{ Storage::disk('s3')->url($group->image) }}" class="group-show-image" alt="">
+      <img src="{{ $group->image }}" class="group-show-image" alt="">
       <div class="group-show-content">{{$group->content}}</div>
     </div>
     @if (Auth::id()===$group->user_id)
