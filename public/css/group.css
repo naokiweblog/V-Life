@@ -139,3 +139,30 @@
 .group-submit {
   text-align: center;
 }
+
+/* コメント一覧 */
+.group-comment {
+  width: 800px;
+  min-height: 200px;
+  margin: 10px auto;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  background-color: #D9E5FF;
+  padding: 10px;
+}
+
+.one-comment {
+  margin-bottom: 20px;
+}
+
+.comment-content {
+  background-color: aliceblue;
+}
+
+.comment-form-control-textarea {
+  height: 100px;
+  width: 100%;
+}
+
+.comment-submit {
+  text-align: center;
+}
