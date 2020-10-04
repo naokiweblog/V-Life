@@ -36,11 +36,11 @@
 <img width="1436" alt="V-Lifeトップページ" src="https://user-images.githubusercontent.com/66059951/95012868-fb7b4700-0676-11eb-82a0-a090da5c5466.png">
 
 ---
-#### イベント詳細ページ
+#### イベント詳細ページ（ログイン時）
 興味のあるイベントがあったら積極的に連絡してみよう。
 <img width="1436" alt="V-Lifeイベント詳細ページ" src="https://user-images.githubusercontent.com/66059951/95012929-996f1180-0677-11eb-874a-dd5c2fc02861.png">
 
 ---
-#### イベント作成ページ
+#### イベント作成ページ（ログイン時）
 自分でイベントを作ることもできます。
 <img width="1437" alt="V-Lifeイベント作成ページ" src="https://user-images.githubusercontent.com/66059951/95012871-046c1880-0677-11eb-9989-e69fe53cf8fc.png">
